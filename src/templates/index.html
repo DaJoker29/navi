@@ -8,7 +8,7 @@
     <header class="site-header">   
     </header>
     <section class="content">
-        <h2 id="heading-1">Heading #1</h2>
+        <h2 id="heading-1" data-navi>Heading #1</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum aspernatur nam voluptate et, dignissimos numquam accusantium ea hic officia aut error, veritatis porro ratione odit, corporis reprehenderit voluptates doloremque dolorem.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates adipisci libero expedita consectetur, quisquam pariatur. Porro magnam sint illo ut sequi odio soluta, praesentium, iusto, minus placeat accusamus voluptatem id?</p>
         <p>Eveniet ut porro, enim minima possimus veritatis ipsam dolorum nemo nulla quam, odio necessitatibus adipisci beatae molestiae, eius. Et numquam debitis, fuga nulla quasi expedita delectus sapiente dignissimos at voluptas.</p>
@@ -22,7 +22,7 @@
         <p>Dolor officiis, eos, nisi ducimus illo debitis doloribus fugit deserunt ullam necessitatibus placeat cupiditate recusandae praesentium commodi vel consectetur cumque eius dolore corrupti aperiam quis! Maxime id qui praesentium quaerat!</p>
         <p>Iste cumque, quaerat fugit, laborum tempore soluta excepturi, maiores ratione commodi animi explicabo odit velit quod, nesciunt illo aliquam magni voluptatum quis. Laborum, necessitatibus. Error veniam maxime sed ad architecto.</p>
         <p>Cumque sint dolorum veritatis libero praesentium quo doloribus illum, dicta quibusdam consectetur animi sit, commodi assumenda nesciunt esse natus. Doloremque quis iure magni amet molestiae. Maiores nobis dolore tempora ex?</p>
-        <h2 id="heading-3">Heading #3</h2>
+        <h2 id="heading-3" data-navi>Heading #3</h2>
         <p>Dignissimos, vitae placeat fugiat eius sequi culpa iusto, amet officiis odit, atque, quos repellat. Alias quasi deleniti voluptatibus dignissimos officia qui facere eaque nam facilis eum quisquam labore, dolores optio.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus pariatur consequatur doloremque magnam maxime autem quaerat quidem laboriosam illo, quibusdam perspiciatis reiciendis, velit optio voluptatem at. Natus magnam, cupiditate. Cupiditate.</p>
         <p>Repellendus quaerat, quidem eos vel ratione tempore a hic porro, veritatis perspiciatis, voluptatibus animi. Doloremque dolorum labore facere illum voluptatum sit id officia aliquid tempora, impedit libero quas. Reprehenderit, expedita.</p>
@@ -36,7 +36,7 @@
         <p>Repellat nobis sed hic blanditiis minus expedita architecto ipsum illum! Tempore enim quam quia aspernatur omnis, hic id et nobis blanditiis veniam soluta eaque quisquam sit ex iusto facere libero.</p>
         <p>Natus repellendus quibusdam debitis provident, expedita recusandae, dolores, excepturi beatae reprehenderit perspiciatis ipsam voluptatem accusantium accusamus dignissimos labore neque. Consectetur nobis neque cum, voluptatibus repudiandae veniam voluptate temporibus dolor ullam.</p>
         <p>Odio ipsam inventore molestias expedita amet autem sed, ut ex libero fuga incidunt vero voluptatibus corporis natus commodi tempore. Velit beatae neque quia, explicabo eaque asperiores corporis adipisci facere vero?</p>
-        <h2 id="heading-5">Heading #5</h2>
+        <h2 id="heading-5" data-navi>Heading #5</h2>
         <p>Animi error ut, sequi repudiandae rem? Quaerat ullam, temporibus consequuntur commodi nostrum ea delectus qui aspernatur quis perferendis quam, doloremque odit aut soluta minima, sapiente incidunt natus recusandae sed! Quos!</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus ipsa modi optio quod impedit veritatis error excepturi accusamus, hic similique natus laborum, dolore iusto facilis vel vero! Est architecto, quisquam.</p>
         <p>Dolores laboriosam porro fugiat alias et, tempore quia, blanditiis esse cumque placeat sit earum commodi. Dolores tempore laborum voluptas nam fugit animi vitae sapiente, cum sequi ea eligendi dicta et!</p>
@@ -48,10 +48,13 @@
     
     <script src="script.js"></script>
     <script>
-        Navi.init({
-            container: ".site-header",
-            target: ".content > h2"
-        });
+        Navi.init(
+            {
+                container: ".site-header",
+                target: ".content > h2",
+                id: "site-nav"
+            }
+        );
     </script>
 </body>
 </html>

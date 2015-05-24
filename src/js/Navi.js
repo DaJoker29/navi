@@ -1,23 +1,23 @@
 var Navi = (function ( module ) {
 
-    /* BUILD */
-    var build = function( args ) {
+    // Local Variables
+    var container, target, id;
 
-        var container = document.querySelector(args.container);
-        var target = document.querySelectorAll(args.target);
+    /* BUILD */
+    var build = function() {
+
         // Create elements
         var fragment = document.createDocumentFragment();
         var menu = document.createElement('select');
         
         // Set element values
-        menu.id = menu.className = 'navi';
+        menu.id = menu.className = id;
         fragment.appendChild(menu);
 
         // Create/Add default option
         var option = document.createElement('option');
         option.value = '';
-        option.disabled = true;
-        option.selected = true;
+        option.disabled = option.selected = true;
         option.textContent = 'Navigation';
         menu.appendChild(option);
 
@@ -38,7 +38,7 @@ var Navi = (function ( module ) {
 
     /* LISTEN */
     var listener = function() {
-        var el = document.querySelector('#navi');
+        var el = document.querySelector('#' + id);
         el.addEventListener('change', function( e ) {
             var selection = e.target.value;
 
@@ -58,7 +58,11 @@ var Navi = (function ( module ) {
 
     /* INITIALIZE */
     module.init = function ( args ) {
-        build(args);
+        container = document.querySelector( args.container || 'body' );
+        target = document.querySelectorAll( args.target || '[data-navi]' );
+        id = args.id || 'navi';
+
+        build();
         listener();
     };
 
