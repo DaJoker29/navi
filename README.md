@@ -16,7 +16,9 @@ Next, use Grunt to build public folder
 
 `grunt dev` for development
 
-Default `grunt` command will build development version and launch `grunt watch` to jump straight into coding
+*Default `grunt` command will build development version and launch `grunt watch` to jump straight into coding*
+
+Finally, copy `navi.js` file into your project.
 
 
 Usage
