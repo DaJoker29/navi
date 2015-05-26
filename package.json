@@ -9,7 +9,7 @@
     "grunt-contrib-watch": "^0.6.1"
   },
   "name": "navi",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "JS module that builds navigation menus",
   "main": "Gruntfile.js",
   "dependencies": {
