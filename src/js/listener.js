@@ -7,6 +7,14 @@ var Navi = ( function ( module ) {
         if(typeof smoothScroll !== 'undefined') {
             smoothScroll.animateScroll( null, location );
         } else {
+            window.history.pushState( null, null, [
+                window.location.protocol, 
+                '//', 
+                window.location.host, 
+                window.location.pathname, 
+                window.location.search, 
+                location
+            ].join(''));
             document.querySelector(location).scrollIntoView();
         }
     };
