@@ -39,7 +39,8 @@ Call the module near the end of your `<body>`:
 Navi.init({ 
   container: 'container', 
   target: 'target', 
-  id: 'id' 
+  id: 'id',
+  type: 'type'
 });
 ```
 
@@ -47,6 +48,7 @@ Navi.init({
 > - `container` -- The DOM element you want to select menu to be appended to. (Default: `body`)
 > - `target` -- The CSS selector string of elements you wish to be displayed in the menu (Default: `[data-navi]`)
 > - `id` -- The HTML ID and Class you wish for the select menu to create (Default: `navi`)
+> - `type` -- Which type of menu to build, `select` or `ul`. (Default: `select`)
 
 
 
