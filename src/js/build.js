@@ -1,45 +1,79 @@
 var Navi = ( function ( module ) {
 
+    var target, container, id, type;
+
+    // Append Helper
+    var append = function ( element, fragment ) {
+        if( typeof element.appendChild === 'function' ) {
+            element.appendChild( fragment );
+        }
+    };
+
     // Option factory
-    var createOpt = function ( value, textContent, def ) {
+    var createItem = function ( value, textContent, def ) {
 
-        // Create option
-        var opt = document.createElement('option');
-        opt.value = value;
-        opt.textContent = textContent;
+        var opt, link;
 
-        // Check default flag
-        if (def) {
-            opt.disabled = opt.selected = true;
+        if ( type === 'select') {
+
+            // Create option
+            opt = document.createElement('option');
+            opt.value = value;
+            opt.textContent = textContent;
+
+            // Check default flag
+            if (def) {
+                opt.disabled = opt.selected = true;
+            }
+        } else {
+
+            // Create option
+            opt = document.createElement('li');
+            link = document.createElement('a');
+            link.href = value;
+            link.textContent = textContent;
+
+            append( opt, link );
         }
 
         return opt;
     };
 
-    // Generate navigation menu
-    module.build = function () {
-
-        var target = module.target;
-        var container = module.container;
+    // Select Menu constructor
+    var build = function () {
 
         // Create elements
         var frag = document.createDocumentFragment();
-        var menu = document.createElement('select');
-        
+        var menu = document.createElement( type );
+
         // Set element values
-        menu.id = menu.className = module.id;
-        frag.appendChild(menu);
+        menu.id = menu.className = id;
 
-        // Default option
-        menu.appendChild(createOpt('', 'Navigation', true));
+        // Build menu
+        append( frag, menu );
 
-        // Populate menu with options
-        for(var i = 0; i < target.length; i++) {
-            menu.appendChild(createOpt('#' + target[i].id, target[i].textContent));
+        if ( type === 'select') {
+            append( menu, createItem( '', 'Navigation', true ) );
         }
 
-        // Add fragment to DOM
-        container.appendChild(frag);
+        for(var i = 0; i < target.length; i++) {
+            append( menu, createItem( '#' + target[i].id,
+                target[i].textContent ) );
+        }
+
+        // Push to DOM
+        append( container, frag );
+    };
+
+    // Generate navigation menu
+    module.build = function () {
+
+        target = module.target;
+        container = module.container;
+        id = module.id;
+        type = module.type;
+
+        build();
     };
 
     return module;
