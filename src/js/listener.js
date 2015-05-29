@@ -1,11 +1,11 @@
 var Navi = ( function ( module ) {
 
     // Scrolling function. 
-    // If present, it uses SmoothScroll, otherwise scrollIntoView().
-    var scrollTo = function ( location ) {
+    var scrollTo = function ( hash ) {
 
+        // If present SmoothScroll, otherwise scrollIntoView().
         if(typeof smoothScroll !== 'undefined') {
-            smoothScroll.animateScroll( null, location );
+            smoothScroll.animateScroll( null, hash );
         } else {
             window.history.pushState( null, null, [
                 window.location.protocol, 
@@ -13,30 +13,35 @@ var Navi = ( function ( module ) {
                 window.location.host, 
                 window.location.pathname, 
                 window.location.search, 
-                location
+                hash
             ].join(''));
-            document.querySelector(location).scrollIntoView();
+            document.querySelector(hash).scrollIntoView();
         }
     };
 
     // Listener callback
-    var eventListener = function ( event ) {
+    var eventListener = function ( e ) {
 
-        var value = event.target.value;
+        // Prevent links from reloading the page
+        e.preventDefault();
 
-        if(value === '') {
-            return;
-        } else {
-            scrollTo( value );
-            event.target.selectedIndex = 0;
+        var hash = e.target.value || e.target.hash;
+        if( hash !== '' ) {
+            scrollTo( hash );
+
+            if ( module.type === 'select') {
+                e.target.selectedIndex = 0;
+            }
         }
     };
 
     // Activate listener on menu
     module.listen = function () {
 
+        var event = (module.type === 'select') ? 'change' : 'click';
+
         var menu = document.querySelector('#' + module.id);
-        menu.addEventListener('change', eventListener);
+        menu.addEventListener(event, eventListener);
     };
 
     return module;
